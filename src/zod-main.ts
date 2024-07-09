@@ -24,6 +24,8 @@ const Product = z.object({
   categories: z.array(z.string()),
 });
 
+type ProductType = z.infer<typeof Product>;
+
 const productResponse = Product.safeParse({
   id: "123e4567-e89b-12d3-a456-426614174000",
   name: "Laptop",
@@ -185,6 +187,6 @@ const numberWithCatch = z.string().catch("Error");
 
 const AgeSchema = z.preprocess((value) => Number(value), z.number().min(0));
 
-console.log(AgeSchema.safeParse("10"));
-console.log(AgeSchema.safeParse("twenty-five"));
-console.log(AgeSchema.safeParse("-5"));
+// console.log(AgeSchema.safeParse("10"));
+// console.log(AgeSchema.safeParse("twenty-five"));
+// console.log(AgeSchema.safeParse("-5"));
